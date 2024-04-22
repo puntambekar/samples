@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>CV</title>
+    <style>
+        /* CSS styles for better presentation */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .subsection {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+<h1>Curriculum Vitae</h1>
+
+<!-- Personal Information Section -->
+<div class="section">
+    <p class="section-title">Personal Information</p>
+    <p>Name: <span th:text="${personalInfo.name}">[Name]</span></p>
+    <p>Email: <span th:text="${personalInfo.email}">[Email]</span></p>
+    <p>Phone: <span th:text="${personalInfo.phone}">[Phone]</span></p>
+    <!-- Add more personal information fields as needed -->
+</div>
+
+<!-- Education Section -->
+<div class="section">
+    <p class="section-title">Education</p>
+    <div th:each="education : ${educations}">
+        <div class="subsection">
+            <p>Degree: <span th:text="${education.degree}">[Degree]</span></p>
+            <p>Institution: <span th:text="${education.institution}">[Institution]</span></p>
+            <p>Year: <span th:text="${education.year}">[Year]</span></p>
+        </div>
+    </div>
+</div>
+
+<!-- Work Experience Section -->
+<div class="section">
+    <p class="section-title">Work Experience</p>
+    <div th:each="experience : ${experiences}">
+        <div class="subsection">
+            <p>Position: <span th:text="${experience.position}">[Position]</span></p>
+            <p>Company: <span th:text="${experience.company}">[Company]</span></p>
+            <p>Duration: <span th:text="${experience.duration}">[Duration]</span></p>
+            <p>Description: <span th:text="${experience.description}">[Description]</span></p>
+        </div>
+    </div>
+</div>
+
+<!-- Skills Section -->
+<div class="section">
+    <p class="section-title">Skills</p>
+    <ul>
+        <li th:each="skill : ${skills}" th:text="${skill}">[Skill]</li>
+    </ul>
+</div>
+
+</body>
+</html>
